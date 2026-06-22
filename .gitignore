@@ -1,0 +1,8 @@
+# build outputs
+apps_postgre/dist/
+apps_postgre/.build/
+
+# local temp files
+*.tmp
+*.log
+.DS_Store

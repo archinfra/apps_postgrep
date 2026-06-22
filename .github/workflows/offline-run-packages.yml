@@ -37,14 +37,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y jq
 
-      - name: Login source registry
-        if: ${{ vars.SOURCE_REGISTRY != '' && secrets.SOURCE_REGISTRY_USERNAME != '' }}
-        uses: docker/login-action@v3
-        with:
-          registry: ${{ vars.SOURCE_REGISTRY }}
-          username: ${{ secrets.SOURCE_REGISTRY_USERNAME }}
-          password: ${{ secrets.SOURCE_REGISTRY_PASSWORD }}
-
       - name: Build offline package
         shell: bash
         run: |

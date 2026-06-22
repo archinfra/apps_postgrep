@@ -1,0 +1,49 @@
+replicaCount: 1
+
+image:
+  repository: docker.io/library/postgres
+  tag: "16.6-bookworm"
+  pullPolicy: IfNotPresent
+
+auth:
+  username: postgres
+  password: ChangeMe_PostgreSQL_123
+  database: appdb
+
+service:
+  type: ClusterIP
+  port: 5432
+
+persistence:
+  enabled: true
+  storageClass: ""
+  accessModes:
+    - ReadWriteOnce
+  size: 20Gi
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 512Mi
+  limits:
+    cpu: "2"
+    memory: 2Gi
+
+postgresql:
+  maxConnections: 200
+  sharedBuffers: 256MB
+  timezone: Asia/Shanghai
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+podAnnotations: {}
+
+securityContext:
+  fsGroup: 999
+
+containerSecurityContext:
+  runAsUser: 999
+  runAsGroup: 999
+  allowPrivilegeEscalation: false

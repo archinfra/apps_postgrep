@@ -1,0 +1,8 @@
+[
+  {
+    "name": "postgres",
+    "source": "docker.io/library/postgres:16.6-bookworm",
+    "target": "library/postgres:16.6-bookworm",
+    "platforms": ["linux/amd64", "linux/arm64"]
+  }
+]

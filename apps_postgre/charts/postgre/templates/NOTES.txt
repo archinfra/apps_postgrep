@@ -1,0 +1,10 @@
+PostgreSQL has been deployed.
+
+Service:
+  {{ include "postgre.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}
+
+Get password:
+  kubectl get secret {{ include "postgre.fullname" . }} -n {{ .Release.Namespace }} -o jsonpath='{.data.password}' | base64 -d; echo
+
+Connect inside cluster:
+  psql -h {{ include "postgre.fullname" . }}.{{ .Release.Namespace }}.svc.cluster.local -U {{ .Values.auth.username }} -d {{ .Values.auth.database }}

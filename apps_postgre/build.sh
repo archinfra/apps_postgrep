@@ -114,7 +114,7 @@ prepare_payload() {
       exit 1
     fi
 
-    if [[ -n "$platforms" ]] && ! jq -e --arg p "$platform" ".[$i].platforms | index($p)" "${IMAGE_JSON}" >/dev/null; then
+    if [[ -n "$platforms" ]] && ! jq -e --arg p "$platform" --argjson idx "$i" '.[$idx].platforms | index($p)' "${IMAGE_JSON}" >/dev/null; then
       echo "[ERROR] image $name does not support platform $platform" >&2
       exit 1
     fi

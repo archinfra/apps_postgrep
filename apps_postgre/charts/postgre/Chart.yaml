@@ -1,0 +1,6 @@
+apiVersion: v2
+name: postgre
+description: Minimal PostgreSQL chart for offline .run delivery
+version: 0.1.0
+appVersion: "16.6"
+type: application
